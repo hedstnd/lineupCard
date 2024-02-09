@@ -2,8 +2,7 @@ table, tr {
 	/*border: 1px solid black;*/
 }
 body {
-	-webkit-user-select: none;
-	user-select: none;
+	
 }
 td {
 	border: 1px solid black;
@@ -30,8 +29,8 @@ span {
 }
 .player {
 	touch-action: none;
-	-webkit-user-select: none;
-	user-select: none;
+	/* -webkit-user-select: none; */
+	/* user-select: none; */
 }
 ._1b,._2b,._3b,.ss {
 	background-color: goldenrod;
