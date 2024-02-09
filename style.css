@@ -25,7 +25,7 @@ span {
 	touch-action: none;
 }
 .player {
-	/* touch-action: none; */
+	touch-action: none;
 }
 ._1b,._2b,._3b,.ss {
 	background-color: goldenrod;
