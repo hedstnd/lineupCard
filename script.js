@@ -129,6 +129,7 @@ function setRos() {
 	});
 }
 function remPlayer(event) {
+	event.preventDefault();
 	localStorage.removeItem(event.target.parentElement.id);
 	event.target.outerHTML = "";
 }
