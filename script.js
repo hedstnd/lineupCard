@@ -127,7 +127,7 @@ function setRos() {
 		player.addEventListener("dragend", dragEnd);
 	});
 	people.forEach((e) => {
-		e.addEventListener("dblclick",remPlayer);
+		e.addEventListener("click",remPlayer);
 	});
 }
 function remPlayer(event) {
