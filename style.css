@@ -32,6 +32,9 @@ span {
 	/* -webkit-user-select: none; */
 	/* user-select: none; */
 }
+.player span::after {
+	content: attr(name);
+}
 ._1b,._2b,._3b,.ss {
 	background-color: goldenrod;
 }

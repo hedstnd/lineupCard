@@ -11,25 +11,25 @@ window.onload = function() {
 			document.getElementById(localStorage.key(i).substring(path.length)).innerHTML = localStorage.getItem(localStorage.key(i));
 		}
 	}
-}
-var nodes = Array.from(document.getElementsByClassName("starter"));
-nodes = nodes.concat(Array.from(document.getElementsByClassName("bench")));
-var posNodes = Array.from(document.getElementsByClassName("pos"));
-var containers = document.querySelectorAll(".container");
-var players = document.querySelectorAll("span");
-players.forEach((player) => {
-  player.addEventListener("dragstart", dragStart);
-  player.addEventListener("dragend", dragEnd);
-});
-var people = Array.from(document.getElementsByClassName("person"));
-people.forEach((e) => {
-	e.addEventListener("dblclick",remPlayer);
-});
-containers.forEach((container) => {
-  container.addEventListener("dragover", dragOver);
-  container.addEventListener("drop", drop);
-});
 
+	nodes = Array.from(document.getElementsByClassName("starter"));
+	nodes = nodes.concat(Array.from(document.getElementsByClassName("bench")));
+	posNodes = Array.from(document.getElementsByClassName("pos"));
+	containers = document.querySelectorAll(".container");
+	players = document.querySelectorAll("span");
+	players.forEach((player) => {
+	  player.addEventListener("dragstart", dragStart);
+	  player.addEventListener("dragend", dragEnd);
+	});
+	people = Array.from(document.getElementsByClassName("person"));
+	people.forEach((e) => {
+		e.addEventListener("dblclick",remPlayer);
+	});
+	containers.forEach((container) => {
+	  container.addEventListener("dragover", dragOver);
+	  container.addEventListener("drop", drop);
+	});
+}
 function dragStart(event) {
   event.dataTransfer.setData("draggedImageId", event.target.id);
   console.log(event.target.parentElement.innerHTML);
@@ -47,6 +47,7 @@ function dragOver(event) {
 function drop(event) {
   const draggedImageId = event.dataTransfer.getData("draggedImageId");
   const draggedImage = document.getElementById(draggedImageId);
+  console.log(draggedImageId);
   const fromContainer = draggedImage.parentNode;
   const toContainer = event.currentTarget;
 
@@ -96,10 +97,11 @@ function addPlayer(name, pos) {
 }
 function addToScreen(name,pos) {
 	var elem = document.createElement("span");
-	elem.className = pos+ " person";
-	elem.innerText = name;
+	elem.className = pos.toLowerCase() + " person";
+	// elem.innerText = name;
+	elem.setAttribute("name",name);
 	elem.setAttribute("draggable","true");
-	elem.setAttribute("id",Date.now());
+	elem.setAttribute("id","_" + Date.now());
 	var firstOpen = nodes.filter(e => e.childElementCount ==0)[0];//e./*lastChild.*/childElementCount ==0)[0];
 	console.log(firstOpen);
 	firstOpen.appendChild(elem); // firstOpen.lastChild.appendChild(elem);
@@ -132,4 +134,15 @@ function remPlayer(event) {
 	event.preventDefault();
 	localStorage.removeItem(event.target.parentElement.id);
 	event.target.outerHTML = "";
+}
+function clrRos() {
+	if (window.confirm("Are you sure you want to clear the roster?")) {
+		for (var i = 0; i < localStorage.length; i++) {
+			if (localStorage.key(i).length > path.length && localStorage.key(i).substring(0,path.length).includes(path)) {
+				localStorage.removeItem(localStorage.key(i));
+				i--;
+			}
+		}
+		window.location.reload();
+	}
 }
