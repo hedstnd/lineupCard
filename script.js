@@ -23,7 +23,7 @@ window.onload = function() {
 	});
 	people = Array.from(document.getElementsByClassName("person"));
 	people.forEach((e) => {
-		e.addEventListener("dblclick",remPlayer);
+		e.addEventListener("click",remPlayer);
 	});
 	containers.forEach((container) => {
 	  container.addEventListener("dragover", dragOver);
@@ -132,7 +132,8 @@ function setRos() {
 }
 function remPlayer(event) {
 	event.preventDefault();
-	localStorage.removeItem(event.target.parentElement.id);
+	console.log(event.target.id);
+	localStorage.removeItem(path + event.target.parentElement.id);
 	event.target.outerHTML = "";
 }
 function clrRos() {
