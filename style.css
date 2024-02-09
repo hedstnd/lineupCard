@@ -31,6 +31,7 @@ span {
 	touch-action: none;
 	/* -webkit-user-select: none; */
 	/* user-select: none; */
+	cursor: pointer;
 }
 .player span::after {
 	content: attr(name);
