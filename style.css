@@ -36,9 +36,15 @@ span {
 .player span::after {
 	content: attr(name);
 }
-.player.injured span:: after {
+.player span.injured::after {
 	 content: attr(name) '⊕' !important;
 	}
+.player span.lhh::after {
+	 content: attr(name) '' !important;
+}
+.player span.lhp::after {
+		content: attr(name) '' !important;	
+}
 ._1b,._2b,._3b,.ss {
 	background-color: goldenrod;
 }
