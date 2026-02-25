@@ -36,6 +36,9 @@ span {
 .player span::after {
 	content: attr(name);
 }
+.player.injured span:: after {
+	 content: attr(name) '⊕' !important;
+	}
 ._1b,._2b,._3b,.ss {
 	background-color: goldenrod;
 }
